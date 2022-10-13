@@ -12,7 +12,7 @@ namespace IsDbBisewFinalProject.Models
     {
         public int Id { get; set; }
 
-        [Required,StringLength(50), Display(Name = "Customer Name")]
+        [Required,StringLength(70), Display(Name = "Customer Name")]
         public string CustomerName { get; set; }
 
         [StringLength(50)]
