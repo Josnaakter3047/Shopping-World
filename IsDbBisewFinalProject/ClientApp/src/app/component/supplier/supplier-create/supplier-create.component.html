@@ -1,0 +1,29 @@
+
+<form class="form-container" [formGroup]="supplierFrm" (submit)="insert()">
+  <div class="f-w" mb-4>
+    <h3>Insert new Supplier Informations</h3>
+  </div>
+  <mat-form-field class="f-w">
+    <mat-label>Supplier Name</mat-label>
+    <input matInput formControlName="supplierName" />
+  </mat-form-field>
+  <mat-form-field class="f-w">
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address" />
+  </mat-form-field>
+  <mat-form-field class="f-w">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+  </mat-form-field>
+  <mat-form-field class="f-w">
+    <mat-label>Contact Number</mat-label>
+    <input matInput formControlName="contactNo" />
+  </mat-form-field>
+  <div class="f-w">
+    <button [disabled]="supplierFrm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Save</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/supplier']">Back to list</a>
+  </div>
+</form>
+

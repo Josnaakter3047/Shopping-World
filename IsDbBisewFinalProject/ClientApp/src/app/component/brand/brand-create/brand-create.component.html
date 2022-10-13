@@ -1,0 +1,20 @@
+
+<form class="form-container" [formGroup]="brandForm" (submit)="insert()">
+  <div class="f-w">
+    <h3>Create  Brand</h3>
+  </div>
+  <mat-form-field class="f-w">
+    <mat-label>Brand Name</mat-label>
+    <input matInput formControlName="brandName" />
+  </mat-form-field>
+
+  <div class="f-w">
+    <button mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Save</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/brand']">Back to list</a>
+  </div>
+</form>
+
+
+

@@ -1,0 +1,55 @@
+<mat-card class="card-container mat-elevation-z15" style="border:solid 15px #339f41;">
+  <mat-card-header>
+    <mat-card-title class="card-title mt-3">
+      Sales Details
+    </mat-card-title>
+
+    <span class="filter"></span>
+
+  </mat-card-header>
+  <mat-card-content class="mt-6">
+    <mat-divider></mat-divider>
+    <div class="table-container">
+
+
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="saleId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>sales</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.saleId}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="productId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>product</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.productId}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="unitPrice">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>unitPrice</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.unitPrice}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>quantity</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.quantity}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="totalAmount">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>totalAmount</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.totalAmount}}</mat-cell>
+        </ng-container>
+
+
+
+        <mat-header-row *matHeaderRowDef="columnList"></mat-header-row>
+        <mat-row *matRowDef="let row; columns:columnList"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+
+

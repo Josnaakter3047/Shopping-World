@@ -1,0 +1,50 @@
+
+<form class="form-container" [formGroup]="productForm" (submit)="update()">
+  <div class="f-w">
+    <h3>Create  Product</h3>
+  </div>
+  <mat-form-field class="f-w" appearance="outline">
+    <mat-label>Product Title</mat-label>
+    <input matInput formControlName="productTitle" />
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="outline">
+    <mat-label>Category</mat-label>
+    <mat-select formControlName="categoryId">
+      <mat-option value="0" selected="selected">--Select one--</mat-option>
+      <mat-option *ngFor="let cat of categories" [value]="cat.id">{{cat.categoryName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="outline">
+    <mat-label>Sub Category</mat-label>
+    <mat-select formControlName="subCategoryId">
+      <mat-option value="0" selected="selected">--Select one--</mat-option>
+      <mat-option *ngFor="let sub of subcategories" [value]="sub.id">{{sub.subCategoryName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="outline">
+    <mat-label>Brand</mat-label>
+    <mat-select formControlName="brandId">
+      <mat-option value="0" selected="selected">--Select one--</mat-option>
+      <mat-option *ngFor="let br of brands" [value]="br.id">{{br.brandName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="outline">
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description" />
+  </mat-form-field>
+
+  <div class="f-w">
+    <button mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon>Save</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/product']">Back to list</a>
+  </div>
+</form>
+
+
+
+

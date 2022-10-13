@@ -1,0 +1,93 @@
+
+<mat-card class="card-container mat-elevation-z5">
+  <mat-card-header>
+
+    <mat-card-title class="card-title">
+      Purchase Details
+    </mat-card-title>
+
+    <span class="filter">
+
+    </span>
+    <a [routerLink]="['/purchase-detial-create']" mat-raised-button color="primary" style="margin-bottom:5px;margin-right:10px;"><mat-icon>add</mat-icon>New</a>
+
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="productId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Product</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{getProductName(element.productId)}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="purchaseId" style="width:80px;">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Purchase Id</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{getPurchasesId(element.purchaseId)}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity" style="width:20px;">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Qty</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.quantity}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="unitPrice" style="width:20px;">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Unit Price</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.unitPrice}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="manufacturingDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>MFG. Date</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.manufacturingDate|date:'yyyy-MM-dd'}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="isExpirable" style="width:20px;">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Is Exp.</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.isExpirable}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="expiredDate" style="width:20px;">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Exp. Date</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.expiredDate|date:'yyyy-MM-dd'}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="soldQuantity" style="width:20px;">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Sold qty.</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.soldQuantity}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="vatamount">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>VAT</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.vatAmount}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="discount">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Discount</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.discount}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="profit" style="width:60px;">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Sale Price</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.sellPrice}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-icon-button [routerLink]="['/purchase-detial-edit',element.id]"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="warn" (click)="confirmDelete(element)"><mat-icon>delete</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnList"></mat-header-row>
+        <mat-row *matRowDef="let row; columns:columnList"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+

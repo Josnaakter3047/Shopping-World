@@ -1,0 +1,53 @@
+
+<mat-card class="card-container mat-elevation-z5">
+  <mat-card-header>
+
+    <mat-card-title class="card-title">
+      Sub Category List
+    </mat-card-title>
+
+    <span class="filter">
+
+    </span>
+    <a [routerLink]="['/subcategory-create']" mat-raised-button color="primary" style="margin-bottom:5px;margin-right:10px;"><mat-icon>add</mat-icon>New</a>
+
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="categoryId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{getCategoryName(element.categoryId)}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="subCategoryName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Sub Category</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.subCategoryName}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-icon-button [routerLink]="['/subcategory-edit',element.id]"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="warn" (click)="confirmDelete(element)"><mat-icon>delete</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnList"></mat-header-row>
+        <mat-row *matRowDef="let row; columns:columnList"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+
+

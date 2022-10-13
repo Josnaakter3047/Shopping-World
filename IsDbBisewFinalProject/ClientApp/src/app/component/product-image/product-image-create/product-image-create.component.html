@@ -1,0 +1,38 @@
+
+<form class="form-container" [formGroup]="productImageForm" (submit)="insert()">
+  <div class="f-w">
+    <h3>Create new Product Image</h3>
+  </div>
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Product</mat-label>
+    <mat-select formControlName="productId">
+      <mat-option value="">--select one--</mat-option>
+      <mat-option *ngFor="let c of products" [value]="c.id">
+        {{c.productTitle}}
+      </mat-option>
+    </mat-select>
+    <!--<mat-error *ngIf="productImageControl['productId'].touched && productImageControl['productId'].errors">Product name is required!!</mat-error>-->
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="f-w">
+    <mat-label>Product Picture</mat-label>
+    <ngx-mat-file-input formControlName="imagePath" [accept]="'image/*'" (change)="onChange($event)"></ngx-mat-file-input>
+    <mat-icon matSuffix>insert_photo</mat-icon>
+  </mat-form-field>
+
+  <div class="f-w">
+    <mat-checkbox style="margin:0 10px 15px 0;" formControlName="thumbnailImage">For Thumnail</mat-checkbox>
+  </div>
+
+  <div class="f-w">
+    <mat-checkbox style="margin:0 10px 15px 0" formControlName="detialImage">For Details Image</mat-checkbox>
+  </div>
+
+  <div class="f-w">
+    <button [disabled]="productImageForm.invalid" mat-raised-button type="submit" color="primary"><mat-icon>save</mat-icon> Save</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/product-images']">Back to list</a>
+  </div>
+</form>
+

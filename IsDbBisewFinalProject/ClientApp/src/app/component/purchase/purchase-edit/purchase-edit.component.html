@@ -1,0 +1,40 @@
+
+
+
+<form class="form-container" [formGroup]="purchaseForm" (submit)="update()">
+  <div class="f-w">
+    <h3>Update Purchase</h3>
+  </div>
+  <mat-form-field class="f-w">
+    <mat-label>purchaseDate</mat-label>
+    <input matInput formControlName="purchaseDate" [matDatepicker]="picker" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="f-w">
+    <mat-label>Supplier</mat-label>
+    <mat-select formControlName="supplierId">
+      <mat-option value="0" selected="selected">----select one----</mat-option>
+      <mat-option *ngFor="let s of suppliers" [value]="s.id">{{s.supplierName}}</mat-option>
+    </mat-select>
+
+  </mat-form-field>
+
+  <mat-form-field class="f-w">
+    <mat-label>totalAmount</mat-label>
+    <input matInput formControlName="totalAmount" />
+  </mat-form-field>
+
+
+  <div class="f-w">
+    <button mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon>Update</button>
+  </div>
+  <div class="f-w">
+    <a  [routerLink]="['/purchase']">Back to list</a>
+  </div>
+</form>
+
+
+
+

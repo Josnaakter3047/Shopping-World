@@ -1,0 +1,19 @@
+<form class="form-container" [formGroup]="categoryForm" (submit)="update()">
+  <div class="f-w">
+    <h3>Update  Category</h3>
+  </div>
+  <mat-form-field class="f-w">
+    <mat-label>Category Name</mat-label>
+    <input matInput formControlName="categoryName" />
+  </mat-form-field>
+
+  <div class="f-w">
+    <button mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon>Update</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/category']">Back to list</a>
+  </div>
+</form>
+
+
+

@@ -1,0 +1,17 @@
+
+<h1 mat-dialog-title>Category Form</h1>
+<form [formGroup]="categoryForm">
+  <div mat-dialog-content>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Category Name</mat-label>
+      <input formControlName="categoryName" matInput placeholder="enter a category name">
+    </mat-form-field>
+
+  </div>
+
+  <mat-dialog-actions>
+    <button mat-button color="primary" (click)="insert()" [mat-dialog-close]="true">Save</button>
+    <button mat-button color="warn" [mat-dialog-close]="false" cdkFocusInitial>Cancel</button>
+  </mat-dialog-actions>
+</form>

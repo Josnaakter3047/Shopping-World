@@ -1,0 +1,78 @@
+
+<form class="form-container" [formGroup]="purchaseDetailForm" (submit)="insert()">
+  <div class="f-w">
+    <h3>Purchase Detail Form</h3>
+  </div>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Product</mat-label>
+    <mat-select formControlName="productId">
+      <mat-option value="0" selected="selected">--Select one--</mat-option>
+      <mat-option *ngFor="let pro of products" [value]="pro.id">{{pro.productTitle}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Purchase ID</mat-label>
+    <mat-select formControlName="purchaseId">
+      <mat-option value="0" selected="selected">--Select one--</mat-option>
+      <mat-option *ngFor="let pur of purchases" [value]="pur.id">{{pur.id}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Quantity</mat-label>
+    <input matInput formControlName="quantity" />
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Unit Price</mat-label>
+    <input matInput formControlName="unitPrice" />
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Manufacturing Date</mat-label>
+    <input matInput formControlName="manufacturingDate" />
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>VAT</mat-label>
+    <input matInput formControlName="vat" />
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Discount</mat-label>
+    <input matInput formControlName="discount" />
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Sold Quantity</mat-label>
+    <input matInput formControlName="soldQuantity" />
+  </mat-form-field>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Profit</mat-label>
+    <input matInput formControlName="profit" />
+  </mat-form-field>
+
+  <div class="f-w">
+    <label>Is Expirable</label>
+    <input type="checkbox" formControlName="isExpirable" />
+  </div>
+
+  <mat-form-field class="f-w" appearance="fill">
+    <mat-label>Expired Date</mat-label>
+    <input matInput formControlName="expiredDate" />
+  </mat-form-field>
+
+  <div class="f-w">
+    <button [disabled]="purchaseDetailForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon>Save</button>
+  </div>
+  <div class="f-w">
+    <a [routerLink]="['/purchase-detials']">Back to list</a>
+  </div>
+</form>
+
+
+
+

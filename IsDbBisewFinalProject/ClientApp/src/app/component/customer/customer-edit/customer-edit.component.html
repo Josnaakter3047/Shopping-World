@@ -1,0 +1,39 @@
+<form class="form-container" [formGroup]="customerForm" (submit)="update()">
+  <div class="f-w">
+    <h3>Update  Customer</h3>
+  </div>
+  <mat-form-field class="f-w">
+    <mat-label>Customer Name</mat-label>
+    <input matInput formControlName="customerName" />
+  </mat-form-field>
+
+  <mat-form-field class="f-w">
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address" />
+  </mat-form-field>
+
+  <mat-form-field class="f-w">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" type="email" />
+  </mat-form-field>
+
+  <mat-form-field class="f-w">
+    <mat-label>Contact No</mat-label>
+    <input matInput formControlName="contactNo" />
+  </mat-form-field>
+
+  <mat-form-field class="f-w">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" />
+  </mat-form-field>
+
+
+  <div class="f-w">
+    <button mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Update</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/customers']">Back to list</a>
+  </div>
+</form>
+
+

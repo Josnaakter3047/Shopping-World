@@ -1,0 +1,7 @@
+.mat-dialog-content{
+    overflow:hidden;
+    padding-bottom:10px;
+}
+.mat-dialog-actions{
+    justify-content:end;
+}
