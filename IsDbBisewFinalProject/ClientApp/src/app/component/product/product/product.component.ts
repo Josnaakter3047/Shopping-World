@@ -40,17 +40,17 @@ export class ProductComponent implements OnInit {
     private notifySvc: NotifyService,
     private dialog: MatDialog
   ) { }
+
   confirmDelete(item: Product) {
     this.dialog.open(DeleteComponent, {
       width: '500px',
-    }).afterClosed().subscribe(r => {
-      if (r) this.proSvc.deleteProduct(Number(item.id))
+    }).afterClosed().subscribe(x => {
+      if (x) this.proSvc.deleteProduct(Number(item.id))
         .subscribe(x => {
           this.notifySvc.success("Data deleted Successfully", "DISMISS");
-          this.dataSource.data = this.dataSource.data.filter(d => d.id != x.id);
         }, err => {
           this.notifySvc.fail("Data delete failed", "DISMISS");
-        })
+        });
     });
   }
 

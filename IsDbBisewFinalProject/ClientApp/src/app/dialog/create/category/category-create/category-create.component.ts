@@ -1,8 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Category } from '../../../../models/category/category';
 import { CategoryService } from '../../../../services/category/category.service';
 import { NotifyService } from '../../../../services/notification/notify.service';
@@ -14,7 +11,6 @@ import { NotifyService } from '../../../../services/notification/notify.service'
 })
 
 export class CategoryCreateComponent implements OnInit {
-
   categoryList: Category[] = [];
   categories: Category = new Category();
   categoryForm !: FormGroup;
@@ -47,8 +43,6 @@ export class CategoryCreateComponent implements OnInit {
         })
     }
   };
-
-  
 
   ngOnInit(): void {
     
