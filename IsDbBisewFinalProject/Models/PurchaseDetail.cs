@@ -10,7 +10,6 @@ namespace IsDbBisewFinalProject.Models
         public int Id { get; set; }
         [ForeignKey("Product"), Display(Name = "Product Name")]
         public int ProductId { get; set; }
-
         [ForeignKey("Purchase"),Display(Name ="Purchase ID")]
         public int PurchaseId { get; set; }
         public decimal Quantity { get; set; }
