@@ -91,17 +91,21 @@ namespace IsDbBisewFinalProject.Controllers
             {
                 _context.Database.BeginTransaction();
                 _context.Purchases.Add(purchase);
+                
                 await _context.SaveChangesAsync();
 
                 List<Stock> insertStocks = new List<Stock>();
                 List<Stock> updateStocks = new List<Stock>();
                 foreach (PurchaseDetail pd in purchase.PurchaseDetails)
                 {
-                    if(await _context.Stocks.AnyAsync(s => s.ProductId == pd.ProductId))
+                    
+                    if (await _context.Stocks.AnyAsync(s => s.ProductId == pd.ProductId))
                     {
                         Stock stock = await _context.Stocks.SingleAsync(s => s.ProductId == pd.ProductId);
                         stock.TotalStock += pd.Quantity;
                         updateStocks.Add(stock);
+                        
+
                         //_context.Stocks.Update(stock);
                         //await _context.SaveChangesAsync();
                     }
@@ -111,17 +115,20 @@ namespace IsDbBisewFinalProject.Controllers
                         stock.ProductId = pd.ProductId;
                         stock.TotalStock = pd.Quantity;
                         insertStocks.Add(stock);
+
+
                         //await _context.Stocks.AddAsync(stock);
                         //await _context.SaveChangesAsync();
                     }
                 }
                 await _context.Stocks.AddRangeAsync(insertStocks);
                 _context.Stocks.UpdateRange(updateStocks);
+                
                 await _context.SaveChangesAsync();
                 _context.Database.CommitTransaction();
                 return CreatedAtAction("GetPurchase", new { id = purchase.Id }, purchase);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 _context.Database.RollbackTransaction();
                 return CreatedAtAction("GetPurchase", purchase);

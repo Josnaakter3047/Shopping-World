@@ -1,16 +1,17 @@
 
+<h1>Purchase Create Form</h1>
 <form class="form-container" [formGroup]="purchaseForm" (submit)="insert()">
   <div class="f-w">
     <h3>Insert Purchase</h3>
   </div>
-  <mat-form-field class="f-w">
+  <mat-form-field class="f-w" appearance="outline">
     <mat-label>purchaseDate</mat-label>
-    <input matInput formControlName="purchaseDate" [matDatepicker]="picker"/>
+    <input matInput formControlName="purchaseDate" [matDatepicker]="picker" />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field class="f-w">
+  <mat-form-field class="f-w" appearance="outline">
     <mat-label>Supplier</mat-label>
     <mat-select formControlName="supplierId">
       <mat-option value="0" selected="selected">----select one----</mat-option>
@@ -19,19 +20,123 @@
 
   </mat-form-field>
 
-  <mat-form-field class="f-w">
+  <mat-form-field class="f-w" appearance="outline">
     <mat-label>totalAmount</mat-label>
     <input matInput formControlName="totalAmount" />
   </mat-form-field>
+  <!--<table class="table table-bordered table-striped w-50">
+    <thead>
+      <tr>
+        <td>ProductId</td>
+        <td>Quantity</td>
+        <td>unitPrice</td>
+        <td>manufacturingDate</td>
+        <td>vat</td>
+        <td>discount</td>
+        <td>soldQuantity</td>
+        <td>profit</td>
+        <td>isExpirable</td>
+        <td>expiredDate</td>
+        <td>action</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pd of purchaseDetails">
+        <td>{{pd.productId}}</td>
+        <td>{{pd.quantity}}</td>
+        <td>{{pd.unitPrice}}</td>
+        <td>{{pd.manufacturingDate}}</td>
+        <td>{{pd.vat}}</td>
+        <td>{{pd.discount}}</td>
+        <td>{{pd.soldQuantity}}</td>
+        <td>{{pd.profit}}</td>
+        <td>{{pd.isExpirable}}</td>
+        <td>{{pd.expiredDate}}</td>
 
+        <td><button class="btn btn-danger btn-sm">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>-->
+<!--<ul *ngFor="let pd of purchaseDetails ">
+  <li>{{pd.productId}}</li>
+  <li>{{pd.quantity}}</li>
+  <li>{{pd.unitPrice}}</li>
+  <li>{{pd.manufacturingDate}}</li>
+  <li>{{pd.isExpirable}}</li>
+  <li>{{pd.expiredDate}}</li>
+  <li>{{pd.soldQuantity}}</li>
+  <li>{{pd.vat}}</li>
+  <li>{{pd.discount}}</li>
+  <li>{{pd.profit}}</li>
+</ul>-->
+  <div [formGroup]="detailForm" (submit)="saveDetail()">
+    <h3>Purchase Detail Form</h3>
 
+    <mat-form-field appearance="outline">
+      <mat-label>Product</mat-label>
+      <mat-select formControlName="productId">
+        <mat-option value="0" selected="selected">--Select one--</mat-option>
+        <mat-option *ngFor="let pro of products" [value]="pro.id">{{pro.productTitle}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Quantity</mat-label>
+      <input matInput formControlName="quantity" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Unit Price</mat-label>
+      <input matInput formControlName="unitPrice" />
+    </mat-form-field>
+
+    <mat-form-field class="f-w" appearance="outline">
+      <mat-label>Manufacturing Date</mat-label>
+      <input matInput formControlName="manufacturingDate" [matDatepicker]="mpicker" />
+      <mat-datepicker-toggle matSuffix [for]="mpicker"></mat-datepicker-toggle>
+      <mat-datepicker #mpicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>VAT</mat-label>
+      <input matInput formControlName="vat" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Discount</mat-label>
+      <input matInput formControlName="discount" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Sold Quantity</mat-label>
+      <input matInput formControlName="soldQuantity" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Profit</mat-label>
+      <input matInput formControlName="profit" />
+    </mat-form-field>
+
+    <div>
+      <label>Is Expirable</label>
+      <input type="checkbox" formControlName="isExpirable" />
+    </div>
+
+    <mat-form-field class="f-w" appearance="outline">
+      <mat-label>Expired Date</mat-label>
+      <input matInput formControlName="expiredDate" [matDatepicker]="expicker" />
+      <mat-datepicker-toggle matSuffix [for]="expicker"></mat-datepicker-toggle>
+      <mat-datepicker #expicker></mat-datepicker>
+    </mat-form-field>
+
+    <button [disabled]="detailForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon>Save</button>
+
+  </div>
   <div class="f-w">
     <button mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon>Save</button>
-  </div>
-  <div class="f-w">
     <a mat-flat-button [routerLink]="['/purchase']">Back to list</a>
   </div>
+
 </form>
 
 
 
+  

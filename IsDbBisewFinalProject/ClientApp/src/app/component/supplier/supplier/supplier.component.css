@@ -16,4 +16,8 @@
 
 mat-header-cell {
   font-size: 15px;
+  width: 200px;
+}
+mat-cell {
+  width: 200px;
 }

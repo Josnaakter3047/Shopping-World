@@ -13,8 +13,10 @@ namespace IsDbBisewFinalProject.Models
 
         [ForeignKey("Product"), Display(Name = "Product Name")]
         public int ProductId { get; set; } 
+        [Column(TypeName ="money")]
         public decimal UnitPrice { get; set; } // vat has to be shown in the sales table but it should be come from purchaseDetails table. it will not include in this table.
-        public decimal Quantity { get; set; }
+        [Column(TypeName = "money")]
+         public decimal Quantity { get; set; }
         public decimal TotalAmount
         {
             get

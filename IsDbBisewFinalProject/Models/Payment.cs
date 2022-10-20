@@ -14,7 +14,7 @@ namespace IsDbBisewFinalProject.Models
         [Required, Display(Name = "Payment Date"), Column(TypeName = "date"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime PaymentDate { get; set; }
         [Display(Name ="Total Amount")]
-        public double TotalAmount { get; }
+        public decimal TotalAmount { get; }
         public string Status { get; set; }
 
         [ForeignKey("PaymentMethod"),Display(Name ="Payment Method")]

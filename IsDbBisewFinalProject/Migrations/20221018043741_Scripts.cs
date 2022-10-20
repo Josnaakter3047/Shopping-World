@@ -54,7 +54,7 @@ namespace IsDbBisewFinalProject.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerName = table.Column<string>(maxLength: 50, nullable: false),
+                    CustomerName = table.Column<string>(maxLength: 70, nullable: false),
                     Address = table.Column<string>(maxLength: 50, nullable: true),
                     Email = table.Column<string>(nullable: false),
                     ContactNo = table.Column<string>(nullable: false),
@@ -212,7 +212,7 @@ namespace IsDbBisewFinalProject.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PurchaseDate = table.Column<DateTime>(type: "date", nullable: false),
                     SupplierId = table.Column<int>(nullable: false),
-                    TotalAmount = table.Column<double>(nullable: false)
+                    TotalAmount = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -321,7 +321,7 @@ namespace IsDbBisewFinalProject.Migrations
                     ManufacturingDate = table.Column<DateTime>(type: "date", nullable: false),
                     ExpiredDate = table.Column<DateTime>(type: "date", nullable: false),
                     IsExpirable = table.Column<bool>(nullable: false),
-                    SoldQuantity = table.Column<int>(nullable: false)
+                    SoldQuantity = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {

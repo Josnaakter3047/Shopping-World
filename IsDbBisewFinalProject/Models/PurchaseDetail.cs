@@ -12,12 +12,16 @@ namespace IsDbBisewFinalProject.Models
         public int ProductId { get; set; }
         [ForeignKey("Purchase"),Display(Name ="Purchase ID")]
         public int PurchaseId { get; set; }
+        [Column(TypeName = "money")]
         public decimal Quantity { get; set; }
         [Column(TypeName = "money")]
         public decimal UnitPrice { get; set; }
+        [Column(TypeName = "money")]
         public decimal Profit { get; set; }
+        [Column(TypeName = "money")]
         public decimal VAT { get; set; }
         [Display(Name = "VAT Amount")]
+        [Column(TypeName = "money")]
         public decimal VatAmount
         {
             get
@@ -25,8 +29,10 @@ namespace IsDbBisewFinalProject.Models
                 return (UnitPrice*(VAT/100));
             }
         }
+        [Column(TypeName = "money")]
         public decimal Discount { get; set; }
         [Display(Name = "Discount Amount")]
+        
         public decimal DiscountAmount
         {
             get
@@ -46,7 +52,8 @@ namespace IsDbBisewFinalProject.Models
         [Column(TypeName = "date"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime ExpiredDate { get; set; }
         public bool IsExpirable { get; set; }
-        public int SoldQuantity { get; set; }
+        [Column(TypeName = "money")]
+        public decimal SoldQuantity { get; set; }
              
 
         // nev

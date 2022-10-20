@@ -114,7 +114,7 @@ import { PaymentMethodComponent } from './component/payment-method/payment-metho
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [PurchaseService,NotifyService,PurchaseDetailService,DatePipe],
+  providers: [PurchaseService, NotifyService, PurchaseDetailService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

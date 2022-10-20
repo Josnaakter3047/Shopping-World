@@ -19,7 +19,8 @@ namespace IsDbBisewFinalProject.Models
         public int SupplierId { get; set; }
 
         [Required,Display(Name ="Total Amount")]
-        public double TotalAmount { get; set; }
+        [Column(TypeName = "money")]
+        public decimal TotalAmount { get; set; }
 
         //nev 
         public virtual Supplier Supplier { get; set; }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IsDbBisewFinalProject.Migrations
 {
     [DbContext(typeof(ShoppingDbContext))]
-    [Migration("20221013050659_Scripts")]
+    [Migration("20221018043741_Scripts")]
     partial class Scripts
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -145,8 +145,8 @@ namespace IsDbBisewFinalProject.Migrations
 
                     b.Property<string>("CustomerName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(70)")
+                        .HasMaxLength(70);
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -282,8 +282,8 @@ namespace IsDbBisewFinalProject.Migrations
                     b.Property<int>("SupplierId")
                         .HasColumnType("int");
 
-                    b.Property<double>("TotalAmount")
-                        .HasColumnType("float");
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -323,8 +323,8 @@ namespace IsDbBisewFinalProject.Migrations
                     b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("SoldQuantity")
-                        .HasColumnType("int");
+                    b.Property<decimal>("SoldQuantity")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("UnitPrice")
                         .HasColumnType("money");
