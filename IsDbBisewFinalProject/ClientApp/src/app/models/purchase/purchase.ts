@@ -1,8 +1,10 @@
 import { MatTableDataSource } from "@angular/material/table";
+import { empty } from "rxjs";
 import { PurchaseDetail } from "../purchase-detail/purchase-detail";
 
 
 export class Purchase {
+
   constructor(
     // purchase
     public id?: number,

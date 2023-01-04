@@ -1,141 +1,104 @@
 
-<h1>Purchase Create Form</h1>
-<form class="form-container" [formGroup]="purchaseForm" (submit)="insert()">
-  <div class="f-w">
-    <h3>Insert Purchase</h3>
-  </div>
-  <mat-form-field class="f-w" appearance="outline">
-    <mat-label>purchaseDate</mat-label>
-    <input matInput formControlName="purchaseDate" [matDatepicker]="picker" />
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="mt-4">Add New Purchase</h1>
+      <form #form="ngForm" *ngIf="service.formData">
 
-  <mat-form-field class="f-w" appearance="outline">
-    <mat-label>Supplier</mat-label>
-    <mat-select formControlName="supplierId">
-      <mat-option value="0" selected="selected">----select one----</mat-option>
-      <mat-option *ngFor="let s of suppliers" [value]="s.id">{{s.supplierName}}</mat-option>
-    </mat-select>
+        <div class="form-group row mb-2">
+          <label class="col-form-label col-md-2">Purchase Date</label>
+          <div class="col-md-6">
+            <div class="input-group">
+              <input name="purchaseDate" #purchaseDate="ngModel" [(ngModel)]="service.formData.purchaseDate" [matDatepicker]="picker" class="form-control" />
+              <div class="input-group-prepend">
+                <div class="input-group-text" style="padding:0!important">
+                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                   <mat-datepicker #picker></mat-datepicker>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  </mat-form-field>
+        <div class="form-group row mb-2">
+          <label class="col-form-label col-md-2">Supplier</label>
+          <div class="col-md-6">
+            <select name="supplierId" #supplierId="ngModel" [(ngModel)]="service.formData.supplierId" class="form-control">
+              <option value="0">--Select--</option>
+              <option *ngFor="let sup of suppliers" [value]="sup.id">{{sup.supplierName}}</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group row mb-2">
+          <label class="col-form-label col-md-2">Total Amount</label>
+          <div class="col-md-6">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">#</div>
+              </div>
+              <input name="totalAmount" #totalAmount="ngModel" [(ngModel)]="service.formData.totalAmount" class="form-control" />
+            </div>
+          </div>
+          </div>
 
-  <mat-form-field class="f-w" appearance="outline">
-    <mat-label>totalAmount</mat-label>
-    <input matInput formControlName="totalAmount" />
-  </mat-form-field>
-  <!--<table class="table table-bordered table-striped w-50">
-    <thead>
-      <tr>
-        <td>ProductId</td>
-        <td>Quantity</td>
-        <td>unitPrice</td>
-        <td>manufacturingDate</td>
-        <td>vat</td>
-        <td>discount</td>
-        <td>soldQuantity</td>
-        <td>profit</td>
-        <td>isExpirable</td>
-        <td>expiredDate</td>
-        <td>action</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let pd of purchaseDetails">
-        <td>{{pd.productId}}</td>
-        <td>{{pd.quantity}}</td>
-        <td>{{pd.unitPrice}}</td>
-        <td>{{pd.manufacturingDate}}</td>
-        <td>{{pd.vat}}</td>
-        <td>{{pd.discount}}</td>
-        <td>{{pd.soldQuantity}}</td>
-        <td>{{pd.profit}}</td>
-        <td>{{pd.isExpirable}}</td>
-        <td>{{pd.expiredDate}}</td>
+          <!--Purchase Details-->
+          <table class="table table-borderless mt-3">
+            <thead class="table-info">
+              <tr class="text-capitalize">
+                <td>productId</td>
+                <td>quantity</td>
+                <td>unitPrice</td>
+                <td>manufacturingDate</td>
+                <td>expiredDate</td>
+                <td>isExpirable</td>
+                <td>soldQuantity</td>
+                <td>vatAmount</td>
+                <td>discountAmount</td>
+                <td>sellingPrice</td>
+                <td>
+                  <a class="btn btn-success btn-sm" (click)="AddOrEditPurchaseDetails(null,service.formData.purchaseId)"><i class="bi bi-plus"></i> New</a>
+                </td>
+              </tr>
 
-        <td><button class="btn btn-danger btn-sm">Delete</button></td>
-      </tr>
-    </tbody>
-  </table>-->
-<!--<ul *ngFor="let pd of purchaseDetails ">
-  <li>{{pd.productId}}</li>
-  <li>{{pd.quantity}}</li>
-  <li>{{pd.unitPrice}}</li>
-  <li>{{pd.manufacturingDate}}</li>
-  <li>{{pd.isExpirable}}</li>
-  <li>{{pd.expiredDate}}</li>
-  <li>{{pd.soldQuantity}}</li>
-  <li>{{pd.vat}}</li>
-  <li>{{pd.discount}}</li>
-  <li>{{pd.profit}}</li>
-</ul>-->
-  <div [formGroup]="detailForm" (submit)="saveDetail()">
-    <h3>Purchase Detail Form</h3>
+            </thead>
+            <tbody>
+              <tr *ngIf="service.purchaseDetails.length==0">
+                <td class="fst-italic text-center" colspan="10">
+                  No Purchase Details Selected for this Product
+                </td>
+              </tr>
+              <tr *ngFor="let d of service.purchaseDetails; let i=index">
+                <td>{{d.productId}}</td>
+                <td>{{d.quantity}}</td>
+                <td>{{d.unitPrice}}</td>
+                <td>{{d.manufacturingDate}}</td>
+                <td>{{d.expiredDate}}</td>
+                <td>{{d.isExpirable}}</td>
+                <td>{{d.soldQuantity}}</td>
+                <td>{{d.vatAmount}}</td>
+                <td>{{d.discountAmount}}</td>
+                <td>{{d.sellingPrice}}</td>
+                <td>
+                  <a class="btn btn-info btn-sm" (click)="AddOrEditPurchaseDetails(i,service.formData.purchaseId)"><i class="bi bi-pencil"></i>Edit</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Product</mat-label>
-      <mat-select formControlName="productId">
-        <mat-option value="0" selected="selected">--Select one--</mat-option>
-        <mat-option *ngFor="let pro of products" [value]="pro.id">{{pro.productTitle}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Quantity</mat-label>
-      <input matInput formControlName="quantity" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Unit Price</mat-label>
-      <input matInput formControlName="unitPrice" />
-    </mat-form-field>
+          <div class="form-group mt-3">
+            <div class="">
+              <button type="submit" class="btn btn-success"><i class="fas fa-send"></i>Submit</button>
+            </div>
+          </div>
 
-    <mat-form-field class="f-w" appearance="outline">
-      <mat-label>Manufacturing Date</mat-label>
-      <input matInput formControlName="manufacturingDate" [matDatepicker]="mpicker" />
-      <mat-datepicker-toggle matSuffix [for]="mpicker"></mat-datepicker-toggle>
-      <mat-datepicker #mpicker></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>VAT</mat-label>
-      <input matInput formControlName="vat" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Discount</mat-label>
-      <input matInput formControlName="discount" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Sold Quantity</mat-label>
-      <input matInput formControlName="soldQuantity" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Profit</mat-label>
-      <input matInput formControlName="profit" />
-    </mat-form-field>
-
-    <div>
-      <label>Is Expirable</label>
-      <input type="checkbox" formControlName="isExpirable" />
+      </form>
     </div>
-
-    <mat-form-field class="f-w" appearance="outline">
-      <mat-label>Expired Date</mat-label>
-      <input matInput formControlName="expiredDate" [matDatepicker]="expicker" />
-      <mat-datepicker-toggle matSuffix [for]="expicker"></mat-datepicker-toggle>
-      <mat-datepicker #expicker></mat-datepicker>
-    </mat-form-field>
-
-    <button [disabled]="detailForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon>Save</button>
-
   </div>
-  <div class="f-w">
-    <button mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon>Save</button>
-    <a mat-flat-button [routerLink]="['/purchase']">Back to list</a>
-  </div>
+</div>
+  
 
-</form>
+
 
 
 

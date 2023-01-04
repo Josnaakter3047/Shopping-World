@@ -55,6 +55,7 @@ import { CartEditComponent } from './component/cart/cart-edit/cart-edit.componen
 import { CartDetailComponent } from './component/cart-detail/cart-detail/cart-detail.component';
 import { ShoppingSessionComponent } from './component/shopping-session/shopping-session/shopping-session.component';
 import { PaymentMethodComponent } from './component/payment-method/payment-method/payment-method.component';
+import { CreateService } from './services/create.service';
 
 @NgModule({
   declarations: [
@@ -113,8 +114,10 @@ import { PaymentMethodComponent } from './component/payment-method/payment-metho
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
+
   ],
-  providers: [PurchaseService, NotifyService, PurchaseDetailService,DatePipe],
+  entryComponents:[PurchaseDetailCreateComponent],
+  providers: [PurchaseService, NotifyService, PurchaseDetailService,DatePipe,CreateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

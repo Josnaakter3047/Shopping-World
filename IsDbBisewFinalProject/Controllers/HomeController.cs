@@ -24,7 +24,7 @@ namespace IsDbBisewFinalProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetAllData()
         {
-            return await db.Products.Include(c => c.Category).Include(s => s.SubCategory).Include(b => b.Brand).Include(i => i.ProductImages).Include(pd => pd.PurchaseDetails).ToListAsync();
+            return await db.Products.Include(c => c.PurchaseDetails).Include(s => s.ProductImages).ToListAsync();
                 
         }
        

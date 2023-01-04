@@ -13,10 +13,16 @@ span{
 .menu-spacer {
   flex: 1 1 auto;
 }
+.avatar {
+  width: 140px;
+  height: 110px;
+  margin-left:50px;
+  margin-top:2px;
+}
 a {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight:600;
-  font-size:1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
 }
 .sidenav-container {
   height: 100%;

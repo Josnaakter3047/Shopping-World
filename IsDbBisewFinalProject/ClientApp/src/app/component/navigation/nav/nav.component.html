@@ -1,58 +1,62 @@
 
-<mat-sidenav-container  class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewPort [opened]="false">
-    <mat-toolbar style="font-family:cursive;">Shopping World</mat-toolbar>
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon">
+    <mat-icon (click)="this.sideNav.open()" *ngIf="!sideNav.opened" class="mat-18">menu</mat-icon>
+    <mat-icon (click)="this.sideNav.close()" *ngIf="sideNav.opened" class="mat-18">close</mat-icon>
+  </button>
+  <span>Shopping World</span>
+  <span class="menu-spacer"></span>
+  <a mat-button [routerLink]="['/logIn']">Log In</a>
+  <a mat-button [routerLink]="['/logOut']">Log Out</a>
+</mat-toolbar>
+
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sideNav="matSidenav" class="sidenav" fixedInViewPort [opened]="false">
+
+    <img src="http://localhost:59104/SliderImages/logo.jpg" alt="" class="avatar mat-elevation-z8" />
+    <h4 style="text-align:center">Happy Shopping</h4>
     <mat-divider></mat-divider>
     <mat-nav-list style="margin-top:0;padding-top:0">
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/home']"><mat-icon style="margin-right:15px">home</mat-icon> Home</a>
+      <a mat-list-item [routerLink]="['/home']"><mat-icon style="margin-right:15px">home</mat-icon> Home</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/category']"><mat-icon style="margin-right:15px"> category</mat-icon> Categories</a>
+      <a mat-list-item [routerLink]="['/category']"><mat-icon style="margin-right:15px"> category</mat-icon> Categories</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/subcategory']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Sub Categories</a>
+      <a mat-list-item [routerLink]="['/subcategory']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Sub Categories</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/product']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Products</a>
+      <a mat-list-item [routerLink]="['/product']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Products</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/brand']"><mat-icon style="margin-right:15px">folder_special</mat-icon>Brands</a>
+      <a mat-list-item [routerLink]="['/brand']"><mat-icon style="margin-right:15px">folder_special</mat-icon>Brands</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/customers']"><mat-icon style="margin-right:15px">people</mat-icon> Customers</a>
+      <a mat-list-item [routerLink]="['/customers']"><mat-icon style="margin-right:15px">people</mat-icon> Customers</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/supplier']"><mat-icon style="margin-right:15px">people</mat-icon> Suppliers</a>
+      <a mat-list-item [routerLink]="['/supplier']"><mat-icon style="margin-right:15px">people</mat-icon> Suppliers</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/purchase']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Purchase</a>
+      <a mat-list-item [routerLink]="['/purchase']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Purchase</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/purchase-detials']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Purchase Details</a>
+      <a mat-list-item [routerLink]="['/purchase-detials']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Purchase Details</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/product-images']"><mat-icon style="margin-right:15px">add_to_photos</mat-icon>Product Images</a>
+      <a mat-list-item [routerLink]="['/product-images']"><mat-icon style="margin-right:15px">add_to_photos</mat-icon>Product Images</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/sale']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Sale</a>
+      <a mat-list-item [routerLink]="['/sale']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Sale</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/sale-detials']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Sale Details</a>
+      <a mat-list-item [routerLink]="['/sale-detials']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Sale Details</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/cart']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Cart</a>
+      <a mat-list-item [routerLink]="['/cart']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Cart</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/cart-detail']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Cart Details</a>
+      <a mat-list-item [routerLink]="['/cart-detail']"><mat-icon style="margin-right:15px">folder_special</mat-icon> Cart Details</a>
       <mat-divider></mat-divider>
-      <a mat-list-item (click)="drawer.toggle()" [routerLink]="['/payment-method']"><mat-icon style="margin-right:15px">payment</mat-icon> Payment Method</a>
-     
+      <a mat-list-item [routerLink]="['/payment-method']"><mat-icon style="margin-right:15px">payment</mat-icon> Payment Method</a>
+
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar>
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>Shopping World</span>
-      <a mat-button [routerLink]="['/home']">Home</a>
-      <a mat-button [routerLink]="['/about']">About</a>
-      <a mat-button [routerLink]="['/contact']">Contact</a>
-      <span class="menu-spacer"></span>
-      <a mat-button [routerLink]="['/logIn']">Log In</a>
-      <a mat-button [routerLink]="['/logOut']">Log Out</a>
-    </mat-toolbar>
+
     <div class="top-container">
       <router-outlet></router-outlet>
     </div>
+    
   </mat-sidenav-content>
 </mat-sidenav-container>
 

@@ -1,16 +1,8 @@
-.form-container {
-  margin-top:20px;
-  margin-left:30px;
-  width: 100%;
+label {
+  font-family: sans-serif;
+  font-size: 15px;
 }
 
-.f-w {
-  width: 30%;
-  margin-right:10px;
-  margin-bottom: .5rem;
-}
-
-.mat-radio-button ~ .mat-radio-button {
-  margin-left: 16px;
-}
-
+h1 {
+  font-family: sans-serif;
+} 

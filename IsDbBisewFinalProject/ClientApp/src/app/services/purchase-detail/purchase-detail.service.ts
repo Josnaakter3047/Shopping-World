@@ -2,11 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PurchaseDetail } from '../../models/purchase-detail/purchase-detail';
+import { Purchase } from '../../models/purchase/purchase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PurchaseDetailService {
+
+  formData: PurchaseDetail;
+  purchaseDetailItem: PurchaseDetail[];
 
   constructor(private http: HttpClient) { }
   getPurchaseDetails(): Observable<PurchaseDetail[]> {

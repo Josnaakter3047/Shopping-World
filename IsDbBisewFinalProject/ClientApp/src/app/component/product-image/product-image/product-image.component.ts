@@ -19,6 +19,7 @@ export class ProductImageComponent implements OnInit {
   
   productImages: ProductImage[] = [];
   products: Product[] = [];
+
   dataSource: MatTableDataSource<ProductImage> = new MatTableDataSource(this.productImages);
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;

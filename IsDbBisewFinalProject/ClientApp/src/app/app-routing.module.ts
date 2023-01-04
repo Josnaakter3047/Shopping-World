@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
 import { BrandCreateComponent } from './component/brand/brand-create/brand-create.component';
 import { BrandEditComponent } from './component/brand/brand-edit/brand-edit.component';
 import { BrandComponent } from './component/brand/brand.component';
@@ -33,6 +34,7 @@ import { SupplierEditComponent } from './component/supplier/supplier-edit/suppli
 import { SupplierComponent } from './component/supplier/supplier/supplier.component';
 
 const routes: Routes = [
+
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
 
