@@ -19,7 +19,7 @@ namespace IDLC.Controllers
     [ApiController]
     public class AccountsController : ControllerBase
     {
-        private readonly IUnitRepository _unit;
+        /*private readonly IUnitRepository _unit;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IConfiguration _configuration;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -155,6 +155,6 @@ namespace IDLC.Controllers
         public IActionResult IfPhoneNumberAlreadyExists([FromBody] IfExistsViewModel model) =>
             _unit.Users.IfPhoneNumberAlreadyExists(model.Id, model.Name) ?
             Ok(new { statusCode = 200, value = true }) :
-            Ok(new { statusCode = 200, value = false });
+            Ok(new { statusCode = 200, value = false });*/
     }
 }
